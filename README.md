@@ -1,5 +1,12 @@
 # agentcheck
 
+[![npm version](https://img.shields.io/npm/v/@ydeshpa4/agentcheck.svg)](https://www.npmjs.com/package/@ydeshpa4/agentcheck)
+[![npm downloads](https://img.shields.io/npm/dm/@ydeshpa4/agentcheck.svg)](https://www.npmjs.com/package/@ydeshpa4/agentcheck)
+[![CI](https://github.com/yashpy/Agentcheck/actions/workflows/ci.yml/badge.svg)](https://github.com/yashpy/Agentcheck/actions/workflows/ci.yml)
+[![license: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+
+**npm:** https://www.npmjs.com/package/@ydeshpa4/agentcheck
+
 Regression tests for AI agents, and security checks for MCP servers. One package, one CLI, one runtime dependency (`@modelcontextprotocol/sdk`).
 
 ```sh
