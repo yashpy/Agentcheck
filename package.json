@@ -1,0 +1,60 @@
+{
+  "name": "agentcheck",
+  "version": "0.1.0",
+  "description": "Regression tests for AI agents (record, replay, assert, diff tool-call traces) and a security linter/scanner for MCP servers.",
+  "type": "module",
+  "license": "MIT",
+  "author": "Yadnesh Deshpande (https://github.com/yashpy)",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yashpy/Agentcheck.git"
+  },
+  "homepage": "https://github.com/yashpy/Agentcheck#readme",
+  "bugs": "https://github.com/yashpy/Agentcheck/issues",
+  "keywords": [
+    "ai",
+    "agents",
+    "llm",
+    "testing",
+    "regression",
+    "mcp",
+    "model-context-protocol",
+    "security",
+    "tool-poisoning",
+    "ai-sdk"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "bin": {
+    "agentcheck": "dist/cli.js"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc --noEmit",
+    "test": "tsx --test tests/*.test.ts",
+    "prepublishOnly": "npm run typecheck && npm test && npm run build"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.32.2"
+  },
+  "devDependencies": {
+    "@types/node": "^20.19.43",
+    "tsx": "^4.23.15",
+    "typescript": "^5.9.3"
+  }
+}
