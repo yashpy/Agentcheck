@@ -1,5 +1,5 @@
 {
-  "name": "agentcheck",
+  "name": "@ydeshpa4/agentcheck",
   "version": "0.1.0",
   "description": "Regression tests for AI agents (record, replay, assert, diff tool-call traces) and a security linter/scanner for MCP servers.",
   "type": "module",

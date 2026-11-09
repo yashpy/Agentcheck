@@ -3,8 +3,10 @@
 Regression tests for AI agents, and security checks for MCP servers. One package, one CLI, one runtime dependency (`@modelcontextprotocol/sdk`).
 
 ```sh
-npm install --save-dev agentcheck
+npm install --save-dev @ydeshpa4/agentcheck
 ```
+
+Once installed, the CLI command is `agentcheck` (for example `npx agentcheck --help`). To run it without installing, use `npx @ydeshpa4/agentcheck --help`.
 
 - **Agent regression testing.** Record every tool call an agent makes, assert on the trace, replay tools offline, and diff a new run against a baseline. Catch the agent that silently starts looping or skipping a step after a prompt or model change.
 - **MCP server security.** Lint tool definitions for poisoning patterns, scan a live stdio server, and pin tool hashes so you notice when a server changes its tools after you approved them ("rug pull").
@@ -21,7 +23,7 @@ With the Vercel AI SDK, convert the result's steps (AI SDK v4 `args`/`result` an
 
 ```ts
 import { generateText } from "ai";
-import { fromAISteps } from "agentcheck";
+import { fromAISteps } from "@ydeshpa4/agentcheck";
 import { writeFileSync } from "node:fs";
 
 const result = await generateText({ model, tools, prompt, stopWhen: stepCountIs(10) });
@@ -34,7 +36,7 @@ writeFileSync("traces/refund-flow.json", JSON.stringify(trace, null, 2));
 With any other framework, record manually:
 
 ```ts
-import { TraceRecorder } from "agentcheck";
+import { TraceRecorder } from "@ydeshpa4/agentcheck";
 
 const rec = new TraceRecorder({ pricing: { inputPerMillion: 3, outputPerMillion: 15 } });
 rec.step();
@@ -46,7 +48,7 @@ const trace = rec.toTrace();
 ### Assert on it
 
 ```ts
-import { checkTrace } from "agentcheck";
+import { checkTrace } from "@ydeshpa4/agentcheck";
 
 const { pass, failures } = checkTrace(trace, {
   maxSteps: 8,
@@ -65,7 +67,7 @@ Works with any test runner (`node:test`, Vitest, Jest): `assert.ok(pass, failure
 ### Replay tools offline
 
 ```ts
-import { createReplayTools } from "agentcheck";
+import { createReplayTools } from "@ydeshpa4/agentcheck";
 
 const replay = createReplayTools(baselineTrace);           // { strict: true } to require identical args
 const tools = {
@@ -80,7 +82,7 @@ Calls are matched by a hash of their arguments. In non-strict mode an unmatched 
 ### Diff against a baseline
 
 ```ts
-import { diffTraces } from "agentcheck";
+import { diffTraces } from "@ydeshpa4/agentcheck";
 
 const d = diffTraces(baseline, current, { maxStepIncrease: 1, maxCostIncreasePct: 15 });
 if (d.regression) console.log(d.reasons);
@@ -93,7 +95,7 @@ A changed tool sequence counts as a regression unless you pass `allowSequenceCha
 ### Lint tool definitions
 
 ```ts
-import { lintTools } from "agentcheck";
+import { lintTools } from "@ydeshpa4/agentcheck";
 
 const { score, findings } = lintTools(tools); // tools from tools/list
 ```
@@ -117,7 +119,7 @@ Score: 100 minus 25 per high, 10 per medium and 3 per low finding, floored at 0.
 ### Scan a live server and pin its tools
 
 ```ts
-import { scanMcpServer, makePin } from "agentcheck";
+import { scanMcpServer, makePin } from "@ydeshpa4/agentcheck";
 
 const report = await scanMcpServer({ command: "npx", args: ["-y", "some-mcp-server"] });
 // report.lint, report.sessionDrift (tools changed between two listings), report.pass

@@ -1,6 +1,6 @@
 # Publishing agentcheck
 
-The npm name `agentcheck` was unclaimed when this was written (2026-11-09). Check again right before the first publish with `npm view agentcheck`. A 404 means it's still free. If it's taken, use a scoped name such as `@your-npm-user/agentcheck` in `package.json`.
+The package is published as `@ydeshpa4/agentcheck`. npm rejected the unscoped name `agentcheck` as too similar to the existing `agent-check` package. A scope that matches your npm username is always available to you. The CLI command is still `agentcheck`.
 
 ## 1. Put the code on GitHub
 
