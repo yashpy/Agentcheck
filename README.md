@@ -164,6 +164,8 @@ bad-server@0.0.1: 5 tools, score 0/100, 10 finding(s)
 FAIL: 4 high-severity finding(s)
 ```
 
+For a walkthrough against a real public server (the official filesystem server), see [examples/scan-real-server.md](examples/scan-real-server.md).
+
 ## Limits (read these)
 
 - **The linter is heuristic.** Injection detection is a list of regexes. It catches known, lazy attacks and misses paraphrased or obfuscated ones, and it will sometimes flag legitimate text. A clean report does not mean a server is safe. Use it as one layer next to sandboxing, least-privilege credentials and human approval for sensitive tools.
@@ -183,6 +185,8 @@ npm run typecheck
 npm test          # node:test via tsx, includes end-to-end scans of examples/bad-server.ts
 npm run build     # emits dist/
 ```
+
+Contributions are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## License
 
